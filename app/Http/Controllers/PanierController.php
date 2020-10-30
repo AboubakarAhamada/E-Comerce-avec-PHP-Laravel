@@ -12,6 +12,9 @@ use Cart;
  * Nous avons installer le package 'shoppingcart'
  * Voir documentation : https://github.com/darryldecode/laravelshoppingcart#usage
  */
+
+ // NB : L'éditeur souligne certaines lignes en rouge mais ce ne sont pas des erreurs
+ 
 class PanierController extends Controller
 {
     // Ajouter un produit au panier
