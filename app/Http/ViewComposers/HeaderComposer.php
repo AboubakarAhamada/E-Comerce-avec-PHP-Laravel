@@ -20,7 +20,9 @@ class HeaderComposer{
 
     public function compose(View $view){
         // On recupere les catégorie qui sont en ligne
-        $view->with('categories',Category::where('is_online',1)->get());
+        // Et uniquement les categories avec parent_id=null (on ne selectionne pas les sous-categorie)
+        $matches = ['is_online'=>1, 'parent_id'=>null];
+        $view->with('categories',Category::where($matches)->get());
     }
 }
 

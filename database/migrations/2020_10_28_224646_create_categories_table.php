@@ -17,6 +17,12 @@ class CreateCategoriesTable extends Migration
             $table->id();
             $table->string("nom")->unique();
             $table->boolean("is_online")->default(0);
+
+            //Self referencing
+            $table->unsignedBigInteger('parent_id')->nullable();
+            $table->foreign('parent_id')->references('id')
+            ->on('categories')->onDelete('set null');
+
             $table->timestamps();
         });
     }
