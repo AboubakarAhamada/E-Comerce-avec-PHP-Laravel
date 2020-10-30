@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PanierController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Shop\MainController;
 
@@ -23,4 +24,8 @@ use App\Http\Controllers\Shop\MainController;
 Route::get('/',[MainController::class,'index']);
 Route::get('produit/{id}',[MainController::class,'voirProduit']);
 Route::get('categorie/{id}',[MainController::class,'voirParCategorie']);
+
+Route::get('panier', [PanierController::class, 'index'])->name('panier_index');
+Route::post('panier/add/{id}', [PanierController::class, 'add'])->name('panier_add');
+
 

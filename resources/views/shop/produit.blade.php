@@ -17,9 +17,11 @@
         <div class="col-6">
 
         <h1 class="jumbotron-heading">{{$produit->nom}}</h1>
-        <h5>{{number_format($produit->prix_ht,2)}}</h5>
+        <h5>{{number_format($produit->prixTTC())}} €</h5>
         <p class="lead text-muted">{{$produit->description}}</p>
-            <hr>
+        <hr>
+        <form action="{{route('panier_add', ['id'=>$produit->id])}}" id="panier_add" method="POST">
+            @csrf
             <label for="size">Choisissez votre taille</label>
             <select name="size" id="size" class="form-control">
                 <option value="xs">XS</option>
@@ -28,10 +30,15 @@
                 <option value="l">L</option>
                 <option value="xl">XL</option>
                 <option value="xxl">XXL</option>
-            </select>
-            <p>
-                <a href="#" class="btn btn-cart my-2 btn-block"><i class="fas fa-shopping-cart"></i> Ajouter au Panier</a>
-            </p>
+            </select><br>
+            <label for="qty">Quantité</label>
+            <input type="number" name="quantity" id="qty" min="1" value="1" class="form-control">
+        </form>
+        <p>
+            <button type="submit" form="panier_add" class="btn btn-cart my-2 btn-block">
+            <i class="fas fa-shopping-cart"></i> Ajouter au Panier  
+            </button>   
+        </p>
 
         </div>
     </div>
